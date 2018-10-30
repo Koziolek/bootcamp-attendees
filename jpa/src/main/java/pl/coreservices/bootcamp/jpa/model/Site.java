@@ -1,10 +1,15 @@
 package pl.coreservices.bootcamp.jpa.model;
 
+import javax.persistence.Entity;
+import javax.persistence.OneToOne;
+
 /**
  * Created by BKuczynski on 2016-12-15.
  */
+@Entity
 public class Site extends Content {
 
+	@OneToOne
 	private Site parent;
 
 	public Site getParent() {
