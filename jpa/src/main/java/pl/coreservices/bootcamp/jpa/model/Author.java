@@ -2,13 +2,27 @@ package pl.coreservices.bootcamp.jpa.model;
 
 import java.util.Set;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
 /**
  * Created by BKuczynski on 2016-12-14.
  */
+@Entity
+@Table(name = "AUTHOR")
 public class Author {
-
+	
+	@Id
+	@Column(name = "NAME")
 	private String name;
-
+	
+	@ManyToMany
+	@JoinColumn(name="name")
 	private Set<Content> articles;
 
 	public String getName() {
