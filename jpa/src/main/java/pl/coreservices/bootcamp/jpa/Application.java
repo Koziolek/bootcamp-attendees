@@ -23,12 +23,13 @@ public class Application {
 	}
 
 	@Bean
-	public CommandLineRunner demo(EntityManager entityManager) {
+	public CommandLineRunner demo() {
 		return (args)->{
-			entityManager.getTransaction().begin();
-			entityManager.persist(new Post()); //metoda find i persist tu mozesz tworzyc objekty
+			//EntityManager entityManager -< argument
+			//entityManager.getTransaction().begin();
+			//entityManager.persist(new Post()); //metoda find i persist tu mozesz tworzyc objekty
 			
-			entityManager.getTransaction().commit();
+			//entityManager.getTransaction().commit();
 		};
 	}
 }

@@ -2,8 +2,11 @@ package pl.coreservices.bootcamp.jpa.model;
 
 import java.util.Set;
 
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
@@ -12,6 +15,7 @@ import javax.persistence.OneToOne;
  */
 
 @Entity
+@DiscriminatorValue("post")
 public class Post extends Content {
 	
 	
@@ -21,8 +25,7 @@ public class Post extends Content {
 
 	private Set<Comment> comments;
 	
-	@OneToOne
-	@JoinColumn(name = "name")
+	@ManyToOne
 	public Category getMainCategory() {
 		return mainCategory;
 	}
@@ -31,8 +34,7 @@ public class Post extends Content {
 		this.mainCategory = mainCategory;
 	}
 	
-	@OneToMany
-	@JoinColumn(name = "name")
+	@ManyToMany
 	public Set<Category> getCategories() {
 		return categories;
 	}
@@ -42,7 +44,6 @@ public class Post extends Content {
 	}
 	
 	@OneToMany
-	@JoinColumn(name = "id")
 	public Set<Comment> getComments() {
 		return comments;
 	}

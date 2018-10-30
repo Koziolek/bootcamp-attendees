@@ -14,8 +14,13 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.CreationTimestamp;
 
 /**
  * Created by BKuczynski on 2016-12-15.
@@ -51,8 +56,7 @@ public class Content{
 	    }
 
 	
-	@OneToOne
-	@JoinColumn(name="author") //sprobuj tu dac ze to jest z innej tabeli i zrob to tez w comment
+	@ManyToOne
 	public Author getAuthor() {
 		return author;
 	}
@@ -60,8 +64,9 @@ public class Content{
 	public void setAuthor(Author author) {
 		this.author = author;
 	}
-
+	
 	@Column
+	@CreationTimestamp
 	public LocalDateTime getPublishedAt() {
 		return publishedAt;
 	}

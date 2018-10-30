@@ -2,6 +2,7 @@ package pl.coreservices.bootcamp.jpa.model;
 
 import java.util.Set;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -17,10 +18,11 @@ import javax.persistence.Table;
 public class Author {
 	
 	@Id
+	@Column(name = "NAME")
 	private String name;
 	
 	@ManyToMany
-	@JoinColumn(name="author")
+	@JoinColumn(name="name")
 	private Set<Content> articles;
 
 	public String getName() {

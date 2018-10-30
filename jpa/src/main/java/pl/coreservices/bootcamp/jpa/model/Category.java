@@ -1,8 +1,11 @@
 package pl.coreservices.bootcamp.jpa.model;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
@@ -22,6 +25,7 @@ public class Category {
 	private Category parent;
 	
 	@Id
+	@Column(name = "name")
 	public String getName() {
 		return name;
 	}
@@ -30,8 +34,7 @@ public class Category {
 		this.name = name;
 	}
 	
-	@OneToOne(cascade = CascadeType.DETACH)
-    @PrimaryKeyJoinColumn
+	@ManyToOne
 	public Category getParent() {
 		return parent;
 	}

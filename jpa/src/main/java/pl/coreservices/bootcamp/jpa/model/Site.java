@@ -1,7 +1,10 @@
 package pl.coreservices.bootcamp.jpa.model;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 
@@ -10,13 +13,13 @@ import javax.persistence.PrimaryKeyJoinColumn;
  */
 
 @DiscriminatorValue("site")
+@Entity
 public class Site extends Content {
 	
 	
 	private Site parent;
 	
-	@OneToOne(cascade = CascadeType.DETACH)
-    @PrimaryKeyJoinColumn
+	@ManyToOne
 	public Site getParent() {
 		return parent;
 	}
