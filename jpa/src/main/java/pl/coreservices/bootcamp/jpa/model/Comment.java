@@ -1,16 +1,28 @@
 package pl.coreservices.bootcamp.jpa.model;
 
+import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 /**
  * Created by BKuczynski on 2016-12-14.
  */
+@Entity
+@Table(name = "comment")
 public class Comment {
 
+	@Column(name = "id")
+	@Id
+	@GeneratedValue(strategy= GenerationType.AUTO)
+	private UUID id;
+
+	@Column(name = "postedAt")
 	private LocalDateTime postedAt;
 
+	@Column(name = "content")
 	private String content;
 
+	@ManyToOne
 	private Post post;
 
 	public LocalDateTime getPostedAt() {
@@ -35,5 +47,13 @@ public class Comment {
 
 	public void setPost(Post post) {
 		this.post = post;
+	}
+
+	public UUID getId() {
+		return id;
+	}
+
+	public void setId(UUID id) {
+		this.id = id;
 	}
 }

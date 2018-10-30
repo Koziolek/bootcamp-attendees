@@ -1,12 +1,20 @@
 package pl.coreservices.bootcamp.jpa.model;
 
+import javax.persistence.*;
+
 /**
  * Created by BKuczynski on 2016-12-14.
  */
+
+@Entity
+@Table(name = "category")
 public class Category {
 
+	@Column(name = "name", unique = true)
+	@Id
 	private String name;
 
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private Category parent;
 
 	public String getName() {
