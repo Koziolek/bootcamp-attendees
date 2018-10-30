@@ -22,9 +22,9 @@ public class Application {
 	@Bean
 	public CommandLineRunner demo(EntityManager entityManager) {
 		return (args)->{
-			entityManager.getTransaction().begin();
-			entityManager.persist(new Post());
-			entityManager.getTransaction().commit();
+			//entityManager.getTransaction().begin();
+			//entityManager.persist(new Post());
+			//entityManager.getTransaction().commit();
 		};
 	}
 }

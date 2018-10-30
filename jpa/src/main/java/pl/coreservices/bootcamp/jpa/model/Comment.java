@@ -8,7 +8,6 @@ import java.time.LocalDateTime;
  */
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-@DiscriminatorColumn(name="Comment_type")
 public class Comment {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -18,7 +17,8 @@ public class Comment {
 
 	private String content;
 
-	@OneToOne
+	@ManyToOne
+	@JoinColumn(nullable = false, name = "post_id")
 	private Post post;
 
 	public LocalDateTime getPostedAt() {

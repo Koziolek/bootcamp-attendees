@@ -7,8 +7,9 @@ import javax.persistence.Entity;
  * Created by BKuczynski on 2016-12-15.
  */
 @Entity
-@DiscriminatorValue("Anonymous")
 public class AnonymousComment extends Comment{
+
+	private String authorName;
 
 	public String getAuthorName() {
 		return authorName;
@@ -17,6 +18,4 @@ public class AnonymousComment extends Comment{
 	public void setAuthorName(String authorName) {
 		this.authorName = authorName;
 	}
-
-	private String authorName;
 }

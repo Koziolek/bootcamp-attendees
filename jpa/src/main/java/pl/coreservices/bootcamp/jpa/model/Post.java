@@ -8,17 +8,14 @@ import java.util.Set;
  */
 @Entity
 public class Post extends Content {
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long id;
-
-	@OneToOne
+	@ManyToOne
+	@JoinColumn(nullable = false, name = "main_category_id")
 	private Category mainCategory;
 
 	@ManyToMany
-	@JoinTable(name="category_post",
-			joinColumns=@JoinColumn(name="post_id"),
-			inverseJoinColumns=@JoinColumn(name="category_id"))
+	@JoinTable(name="post_category",
+			joinColumns = @JoinColumn(nullable = false, name = "post_id"),
+			inverseJoinColumns = @JoinColumn(nullable = false, name = "category_id"))
 	private Set<Category> categories;
 
 	@OneToMany(mappedBy = "post")

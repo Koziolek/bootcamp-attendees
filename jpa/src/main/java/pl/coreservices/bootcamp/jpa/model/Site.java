@@ -1,6 +1,8 @@
 package pl.coreservices.bootcamp.jpa.model;
 
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 /**
@@ -10,6 +12,7 @@ import javax.persistence.OneToOne;
 public class Site extends Content {
 
 	@OneToOne
+	@JoinColumn(nullable = false, name = "site_parent_id")
 	private Site parent;
 
 	public Site getParent() {

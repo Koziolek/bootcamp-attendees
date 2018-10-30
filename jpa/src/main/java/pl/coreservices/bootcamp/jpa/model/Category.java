@@ -14,6 +14,7 @@ public class Category {
 	private String name;
 
 	@OneToOne
+	@JoinColumn(nullable = false, name = "category_parent_id")
 	private Category parent;
 
 	public String getName() {

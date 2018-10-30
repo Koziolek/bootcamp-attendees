@@ -14,6 +14,7 @@ public class Content {
 	private long id;
 
 	@ManyToOne
+	@JoinColumn(nullable = false, name = "author_id")
 	private Author author;
 
 	private LocalDateTime publishedAt;
