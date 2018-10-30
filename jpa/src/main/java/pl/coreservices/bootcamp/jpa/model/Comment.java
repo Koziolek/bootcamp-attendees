@@ -1,16 +1,24 @@
 package pl.coreservices.bootcamp.jpa.model;
 
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
 /**
  * Created by BKuczynski on 2016-12-14.
  */
+@Entity
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class Comment {
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private long id;
 
 	private LocalDateTime postedAt;
 
 	private String content;
 
+	@ManyToOne
+	@JoinColumn(nullable = false, name = "post_id")
 	private Post post;
 
 	public LocalDateTime getPostedAt() {
