@@ -8,6 +8,7 @@ import java.util.UUID;
  * Created by BKuczynski on 2016-12-15.
  */
 @Entity
+@Table(name = "signedComment")
 public class SignedComment extends Comment {
 
 	@Id

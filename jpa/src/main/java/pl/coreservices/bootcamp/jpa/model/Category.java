@@ -14,7 +14,10 @@ public class Category {
 	@Id
 	private String name;
 
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@ManyToOne(
+			cascade = CascadeType.ALL,
+			fetch = FetchType.LAZY
+	)
 	private Category parent;
 
 	public String getName() {
