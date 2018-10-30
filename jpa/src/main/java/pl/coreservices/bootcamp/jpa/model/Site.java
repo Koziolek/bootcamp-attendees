@@ -1,11 +1,21 @@
 package pl.coreservices.bootcamp.jpa.model;
 
+import javax.persistence.*;
+
 /**
  * Created by BKuczynski on 2016-12-15.
  */
+
+@Entity
 public class Site extends Content {
 
+    @ManyToOne
+    @JoinColumn(name = "parent_id")
 	private Site parent;
+	
+	
+	
+	/// getters & setters
 
 	public Site getParent() {
 		return parent;
@@ -15,3 +25,4 @@ public class Site extends Content {
 		this.parent = parent;
 	}
 }
+
