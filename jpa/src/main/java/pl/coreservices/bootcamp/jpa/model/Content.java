@@ -1,40 +1,55 @@
 package pl.coreservices.bootcamp.jpa.model;
 
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
 /**
  * Created by BKuczynski on 2016-12-15.
  */
+@Entity(name = "Content")
+@Table(name = "Content")
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Content {
 
-	private Author author;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id", updatable = false)
+    private long id;
 
-	private LocalDateTime publishedAt;
+    @ManyToOne
+    private Author author;
 
-	private String content;
+    @Column(name = "publishedAt")
+    private LocalDateTime publishedAt;
 
+    @Column(name = "content")
+    private String content;
 
-	public Author getAuthor() {
-		return author;
-	}
+    public Author getAuthor() {
+        return author;
+    }
 
-	public void setAuthor(Author author) {
-		this.author = author;
-	}
+    public void setAuthor(Author author) {
+        this.author = author;
+    }
 
-	public LocalDateTime getPublishedAt() {
-		return publishedAt;
-	}
+    public LocalDateTime getPublishedAt() {
+        return publishedAt;
+    }
 
-	public void setPublishedAt(LocalDateTime publishedAt) {
-		this.publishedAt = publishedAt;
-	}
+    public void setPublishedAt(LocalDateTime publishedAt) {
+        this.publishedAt = publishedAt;
+    }
 
-	public String getContent() {
-		return content;
-	}
+    public String getContent() {
+        return content;
+    }
 
-	public void setContent(String content) {
-		this.content = content;
-	}
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public long getId() {
+        return id;
+    }
 }
